@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(Quizzler());
@@ -24,29 +26,36 @@ class QuizPage extends StatefulWidget {
   _QuizPageState createState() => _QuizPageState();
 }
 
-
 class _QuizPageState extends State<QuizPage> {
-
- List <Icon> scoreKeeper = [
-
+  List<Icon> scoreKeeper = [
     Icon(
       Icons.check,
       color: Colors.green,
-
     ),
-
     Icon(
       Icons.close,
       color: Colors.red,
-
     ),
     Icon(
       Icons.check,
       color: Colors.green,
-
     ),
-
   ];
+
+  List<String> questions = [
+    'You can Lead a cow down Stairs but not Up stairs.',
+    'Approximately one quarter of Human Bones are in the feet.',
+    'A slug\'s blood is green.',
+  ];
+
+  int questionNumber = 1;
+
+  void changeQuestionNumber() {
+
+      setState(() {
+        questionNumber = Random().nextInt(2) + 1;
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +69,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                questions[questionNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -74,7 +83,6 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
-
               textColor: Colors.white,
               color: Colors.green,
               child: Text(
@@ -85,15 +93,19 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+
+                changeQuestionNumber();
+
                 setState(() {
-                  scoreKeeper.add(
 
-                    Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ),
 
-                  );
+
+                  // scoreKeeper.add(
+                  //   Icon(
+                  //     Icons.check,
+                  //     color: Colors.green,
+                  //   ),
+                  // );
                 });
               },
             ),
@@ -117,12 +129,8 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        
-        Row(
 
-          children: scoreKeeper
-
-        ),
+        Row(children: scoreKeeper),
         //TODO: Add a Row here as your score keeper
       ],
     );
