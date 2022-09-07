@@ -10,7 +10,7 @@ class Quizzler extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey.shade900,
-        body: SafeArea(
+        body: SafeArea(Ch
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: QuizPage(),
@@ -48,14 +48,9 @@ class _QuizPageState extends State<QuizPage> {
     'A slug\'s blood is green.',
   ];
 
-  int questionNumber = 1;
+  List<bool> answers = [false, true, true];
 
-  void changeQuestionNumber() {
-
-      setState(() {
-        questionNumber = Random().nextInt(2) + 1;
-      });
-  }
+  int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -93,12 +88,16 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer = answers[questionNumber];
 
-                changeQuestionNumber();
-
+                if (correctAnswer == true) {
+                  print('User Got it Right!');
+                } else {
+                  print('User got it Wrong!');
+                }
                 setState(() {
-
-
+                  questionNumber++;
+                  print(questionNumber);
 
                   // scoreKeeper.add(
                   //   Icon(
@@ -124,7 +123,24 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
+                bool correctAnswer = answers[questionNumber];
+
+                if (correctAnswer == false) {
+                  print('User Got it Right!');
+                } else {
+                  print('User got it Wrong!');
+                }
+                setState(() {
+                  questionNumber++;
+                  print(questionNumber);
+
+                  // scoreKeeper.add(
+                  //   Icon(
+                  //     Icons.check,
+                  //     color: Colors.green,
+                  //   ),
+                  // );
+                });
               },
             ),
           ),
