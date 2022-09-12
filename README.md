@@ -3,6 +3,6 @@
 
 Quizzler App is an Application containing True or False Questions.
 
-![QuizAPP](https://user-images.githubusercontent.com/81625175/189654494-5b58ff17-33c4-4b5d-becf-2783a4dd23b2.gif)
+![QuizApp](https://user-images.githubusercontent.com/81625175/189656912-5b4d1143-a913-42b4-b3f9-3870d0fbaf9f.gif)
 
 
