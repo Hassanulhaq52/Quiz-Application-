@@ -2,7 +2,7 @@ import 'question.dart';
 
 class QuizBrain {
   int _questionNumber = 0;
-  List <Question> _questionBank = [
+  List<Question> _questionBank = [
     Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
     Question('Approximately one quarter of human bones are in the feet.', true),
@@ -31,7 +31,7 @@ class QuizBrain {
   ];
 
   void nextQuestion() {
-    if (_questionNumber < _questionBank.length -1) {
+    if (_questionNumber < _questionBank.length - 1) {
       _questionNumber++;
     }
   }
@@ -42,5 +42,19 @@ class QuizBrain {
 
   bool getCorrectAnswer() {
     return _questionBank[_questionNumber].questionAnswer;
+  }
+
+  bool isFinished() {
+    if (_questionNumber >= _questionBank.length - 1) {
+      print('Now Returning True');
+      return true;
+    }
+    else{
+      print('Now Returning False');
+      return false;
+    }
+  }
+  void reset(){
+    _questionNumber = 0;
   }
 }
